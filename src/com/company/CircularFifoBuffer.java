@@ -1,6 +1,6 @@
 package com.company;
 
-public class CircularFifoBuffer{
+public class CircularFifoBuffer{ //TODO renew this structure
     private int size;
     private int capacity;
 
