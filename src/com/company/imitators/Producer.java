@@ -20,12 +20,13 @@ public class Producer implements Runnable{
     public void run() {
         System.out.println(name+"Поток-производитель начал существование");
         try {
-            semaphore.acquire();
-            System.out.println(name+"Тут поток-работник начинает запись");
-            while (arrayDeque.size()<bufferCapacity)
+            while (arrayDeque.size()<bufferCapacity){
+                semaphore.acquire();
+                System.out.println(name+"пишет");
                 arrayDeque.add("NODE: "+arrayDeque.size());
-            semaphore.release();
-            System.out.println(name+"Тут поток-работник закончил запись и снял с семафора себя");
+                System.out.println(name+"не пишет");
+                semaphore.release();
+            }
         } catch (InterruptedException e) {
             System.out.println(e.getMessage());
             semaphore.release();

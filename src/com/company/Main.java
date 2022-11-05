@@ -17,12 +17,13 @@ public class Main {
         ArrayDeque<String> arrayDeque = new ArrayDeque<String>();
 
         new Thread(new Producer(arrayDeque, semaphore, Integer.valueOf(args[0]))).start();
-        new Thread(new Consumer(arrayDeque, semaphore)).start();
+        new Thread(new Consumer(arrayDeque, semaphore, Integer.valueOf(args[0]))).start();
 
+        Thread.currentThread().sleep(1000);//Для того, чтобы вывод на экран первой части успел
         System.out.println("\u001B[32m"+Thread.currentThread().getName()+
                 ": Сделаем паузу в секунду, чтобы не путать два типа синхронизации (симофоры и мьютекс)"+
                 "\u001B[0m ");
-        Thread.currentThread().sleep(2000);
+        Thread.currentThread().sleep(1000);
 
         if (args.length>=2){
 

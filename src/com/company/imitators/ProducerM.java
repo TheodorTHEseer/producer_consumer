@@ -19,6 +19,12 @@ public class ProducerM implements Runnable{
             while (arrayDeque.size()<bufferCapacity)
                 arrayDeque.add("NODE: " + arrayDeque.size());
         }
+        try {
+            Thread.sleep(100);//Чтобы показать, что они живут вместе
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
         System.out.println(name+"Поток-производитель(M) закончил существование");
         Thread.interrupted();
     }
