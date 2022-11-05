@@ -14,8 +14,8 @@ public class ProducerM implements Runnable{
     }
     @Override
     public void run() {
+        System.out.println(name+"Поток-производитель(M) начал существование");
         synchronized (arrayDeque){
-            System.out.println(name+"Поток-производитель(M) начал существование");
             while (arrayDeque.size()<bufferCapacity)
                 arrayDeque.add("NODE: " + arrayDeque.size());
         }
