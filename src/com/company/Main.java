@@ -19,12 +19,12 @@ public class Main {
         new Thread(new Producer(arrayDeque, semaphore, Integer.valueOf(args[0]))).start();
         new Thread(new Consumer(arrayDeque, semaphore)).start();
 
-        System.out.println("\u001B[32m"+Thread.currentThread().getName()+
-                ": Сделаем паузу в секунду, чтобы не путать два типа синхронизации (симофоры и мьютекс)"+
-                "\u001B[0m ");
-        Thread.currentThread().sleep(1000);
-
         if (args.length>=2){
+
+            System.out.println("\u001B[32m"+Thread.currentThread().getName()+
+                    ": Сделаем паузу в секунду, чтобы не путать два типа синхронизации (симофоры и мьютекс)"+
+                    "\u001B[0m ");
+            Thread.currentThread().sleep(1000);
 
             switch (args[1]){
                 case ("-m"):{
