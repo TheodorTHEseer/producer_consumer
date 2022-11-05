@@ -13,18 +13,24 @@ public class ProducerM implements Runnable{
         this.bufferCapacity=bufferCapacity;
     }
     @Override
-    public void run() {
+    public void run() { //Все паузы для наглядности
         System.out.println(name+"Поток-производитель(M) начал существование");
         synchronized (arrayDeque){
+            try {
+                Thread.sleep(100);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            System.out.println(name+"Поток-производитель(M) начал запись");
             while (arrayDeque.size()<bufferCapacity)
                 arrayDeque.add("NODE: " + arrayDeque.size());
+            System.out.println(name+"Поток-производитель(M) закончил запись");
         }
         try {
-            Thread.sleep(100);//Чтобы показать, что они живут вместе
+            Thread.sleep(100);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-
         System.out.println(name+"Поток-производитель(M) закончил существование");
         Thread.interrupted();
     }

@@ -31,7 +31,7 @@ public class Consumer implements Runnable{
             System.out.println(e.getMessage());
             semaphore.release();
         }
-        System.out.println(name+"Поток-потребительМ закончил существование");
+        System.out.println(name+"Поток-потребитель закончил существование");
         Thread.interrupted();
     }
 }

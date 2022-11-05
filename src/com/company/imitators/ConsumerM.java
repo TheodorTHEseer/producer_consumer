@@ -13,13 +13,14 @@ public class ConsumerM implements Runnable{
 
     @Override
     public void run() {
-        System.out.println(name+"Поток-потребитель начал существование");
+        System.out.println(name+"Поток-потребитель(М) начал существование");
         synchronized (arrayDeque){
-            System.out.println(name+"Тут поток-потребитель начал воспроизвдение из буфера");
+            System.out.println(name+"Поток-потребитель(М) начал воспроизвдение из буфера");
             while (!arrayDeque.isEmpty())
                 System.out.println(name+arrayDeque.pollFirst());
+            System.out.println(name+"Поток-потребитель(М) закончил воспроизвдение из буфера");
         }
-        System.out.println(name+"Поток-потребитель закончил существование");
+        System.out.println(name+"Поток-потребитель(М) закончил существование");
         Thread.interrupted();
 
     }
