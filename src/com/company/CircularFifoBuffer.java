@@ -8,15 +8,7 @@ public class CircularFifoBuffer{
         this.capacity=capacity;
     }
 
-    public CircularFifoBuffer(){
-    }
-
-    class Node{
-        String body;
-        Node next;
-    }
-
-    Node [] nodes=(Node[]) new Object[capacity];
+    Node [] nodes = new Node[10];
 
     public boolean isFull(){
         return size == (capacity-1);
@@ -26,9 +18,9 @@ public class CircularFifoBuffer{
         return size == 0;
     }
 
-    public void enqueue (String node){
-        nodes[size]=(Node) new Object();
-        nodes[size].body=node;
+    public void enqueue (Node node){
+        nodes[size]=node;
+        nodes[size].body=node.body;
         nodes[size].next=null;
         if (size > 0 && !isFull()){
             nodes[size-1].next=nodes[size];
